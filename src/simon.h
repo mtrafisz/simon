@@ -36,7 +36,8 @@ private:
     float highlightTimer = 0.0f;
 
 public:
-    SimonButton(Color color, const Vector2 position, const char* soundPath);
+    SimonButton(Color color, const Vector2& position, const char* soundPath);
+    ~SimonButton();
 
     void playSound() const;
 

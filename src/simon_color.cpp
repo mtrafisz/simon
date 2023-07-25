@@ -1,8 +1,13 @@
 #include "simon.h"
 
-#define lerpf(a, b, t) ((a) + ((b) - (a)) * (t))
+inline uint8_t lerpf(uint8_t a, uint8_t b, float t) {
+    return (uint8_t)(a + (b - a) * t);
+}
 
 Color colorFromHex(uint32_t hex) {
+    // if any hex value is invalid, return black
+    if (hex > 0xffffffff) return BLACK;
+
     return {
         static_cast<unsigned char>((hex >> 24) & 0xff),
         static_cast<unsigned char>((hex >> 16) & 0xff),

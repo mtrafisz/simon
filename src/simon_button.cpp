@@ -1,9 +1,11 @@
 #include "simon.h"
 
-SimonButton::SimonButton(Color color, const Vector2 position, const char* soundPath) {
-    this->color = color;
-    this->position = position;
-    this->sound = LoadSound(soundPath);
+SimonButton::SimonButton(Color color, const Vector2& position, const char* soundPath) : color(color), position(position) {
+    sound = LoadSound(soundPath);
+}
+
+SimonButton::~SimonButton() {
+    UnloadSound(sound);
 }
 
 void SimonButton::playSound() const {
